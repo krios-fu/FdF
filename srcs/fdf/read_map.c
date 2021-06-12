@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:26 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/12 02:49:38 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/12 22:38:58 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,17 @@ void	allocate_map(t_fdf **fdf)
 	int		i;
 	
 	i = 0;
-	(*fdf)->map->table = (int **)malloc(sizeof(int *) * (*fdf)->map->y);
+	(*fdf)->map->table = (int **)malloc(sizeof(int *) * (*fdf)->map->y + 1);
 	if(!(*fdf)->map->table)
 		p_error("Fail malloc");
 	while (i < (*fdf)->map->y)
 	{
-		(*fdf)->map->table[i] = (int *)malloc(sizeof(int) * (*fdf)->map->x);
+		(*fdf)->map->table[i] = (int *)malloc(sizeof(int) * (*fdf)->map->x + 1);
 		if(!(*fdf)->map->table[i])
 			p_error("Fail malloc");
 		i++;
 	}
+	
 }
 void	fiil_map(char *file, t_fdf **fdf)
 {
@@ -59,10 +60,12 @@ void	fiil_map(char *file, t_fdf **fdf)
 			x++;
 			free(val[x]);
 		}
+		(*fdf)->map->table[y][x] = 0;
 		y++;
 		free(val);
 		free(line);
 	}
+	(*fdf)->map->table[y] = 0;
 	free(line);
 }
 
