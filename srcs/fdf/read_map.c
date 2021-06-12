@@ -6,11 +6,11 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:26 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/11 23:05:36 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/12 02:49:38 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 void	check_line_x(t_fdf **fdf, int wc)
 {
@@ -25,12 +25,12 @@ void	allocate_map(t_fdf **fdf)
 	int		i;
 	
 	i = 0;
-	(*fdf)->map->table = (int **)malloc(sizeof(int *) * (*fdf)->map->x);
+	(*fdf)->map->table = (int **)malloc(sizeof(int *) * (*fdf)->map->y);
 	if(!(*fdf)->map->table)
 		p_error("Fail malloc");
-	while (i < (*fdf)->map->x)
+	while (i < (*fdf)->map->y)
 	{
-		(*fdf)->map->table[i] = (int *)malloc(sizeof(int) * (*fdf)->map->y);
+		(*fdf)->map->table[i] = (int *)malloc(sizeof(int) * (*fdf)->map->x);
 		if(!(*fdf)->map->table[i])
 			p_error("Fail malloc");
 		i++;
@@ -44,32 +44,25 @@ void	fiil_map(char *file, t_fdf **fdf)
 	int		x;
 	int		y;
 
-	fd = open(file, O_RDONLY);
+	fd = open(file, O_RDONLY, 0);
 	allocate_map(fdf);
-	x = 0;
 	y = 0;
 	while(get_next_line(fd, &line) > 0)
 	{
-		//printf("\n");
 		val = ft_split(line, ' ');
-		printf("%s  ", val[0]);
 		if(!val)
 			p_error("Fail malloc");
-		while(y < (*fdf)->map->y)
+		x = 0;
+		while ( x < (*fdf)->map->x)
 		{
-			x = 0;
-			while ( x < (*fdf)->map->x)
-			{
-				// (*fdf)->map->table[y][x] = (int)ft_atoi((char *)val[x]);
-				x++;
-			}
-			//free(val[y]);
-			printf("\n");
-			y++;
+			(*fdf)->map->table[y][x] = ft_atoi(val[x]);
+			x++;
+			free(val[x]);
 		}
+		y++;
+		free(val);
 		free(line);
 	}
-	//free(val);
 	free(line);
 }
 
@@ -85,7 +78,7 @@ void print_map(t_fdf **fdf)
 		x = 0;
 		while ( x < (*fdf)->map->x)
 		{
-			printf("%d  ", (*fdf)->map->table[y][x]);
+			printf("%3d", (*fdf)->map->table[y][x]);
 			x++;
 		}
 		printf("\n");
@@ -112,16 +105,4 @@ void	check_map(char *file, t_fdf **fdf)
 	}
 	free(line);
 	close(fd);
-}
-
-int main()
-{
-	t_fdf *fdf;
-	t_map map;
-	
-	fdf = (t_fdf *)malloc(sizeof(t_fdf));
-	fdf->map = &map;
-	check_map("../test_maps/42.fdf", &fdf);
-	fiil_map("../test_maps/42.fdf", &fdf);
-	print_map(&fdf);
 }

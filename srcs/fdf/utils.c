@@ -6,11 +6,11 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:38:06 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/11 21:32:29 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/12 01:29:31 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 int	word_count(char **str)
 {
