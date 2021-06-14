@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 19:03:59 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 02:02:31 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 03:06:22 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@ void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color)
 	dst = (char *)fdf->data->addr + (y * fdf->data->line_lenght + x
 		* (fdf->data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+void	print_menu(t_fdf **fdf)
+{
+	char *menu;
+
+	menu = "w, s, d, a: Move picture";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 42, 0x03fc35, menu);
+	menu = "Up, Dowm: zoom";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 62, 0x03fc35, menu);
+	menu = "Rigth, Left : Rotation";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 82, 0x03fc35, menu);
+	menu = "p, i: 2D, 3D";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 102, 0x03fc35, menu);
 }
 
 int		ft_exit(t_fdf **fdf)
@@ -35,14 +49,14 @@ void fill_check(t_fdf **fdf, char *str)
 }
 
 int start(t_fdf **fdf)
-{
-	// (void)fdf;	
+{	
 	key_move(fdf);
 	 mlx_destroy_image((*fdf)->data->mlx, (*fdf)->data->img);
 	 (*fdf)->data->img = mlx_new_image((*fdf)->data->mlx, (*fdf)->data->winx, (*fdf)->data->winy);
 	 draw(fdf);
 	 mlx_put_image_to_window((*fdf)->data->mlx,
 	 (*fdf)->data->win, (*fdf)->data->img, 0, 0);
+	 print_menu(fdf);
 	return(1);
 }
 
@@ -93,6 +107,7 @@ int main(int argc, char *argv[])
 	draw(&fdf);
 	mlx_put_image_to_window(fdf->data->mlx,
 		fdf->data->win, fdf->data->img, 0, 0);
+	print_menu(&fdf);
 	//draw(&fdf);
 	mlx_hook(fdf->data->win, 2, (1L << 0), ft_keypress,&fdf);
 	mlx_hook(fdf->data->win, 3, (1L << 0), ft_keyrelease, &fdf);

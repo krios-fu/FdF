@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 02:01:21 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 02:40:11 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
 void	bresenham(float x1, float y1, float x2, float y2, t_fdf **fdf);
 int		draw(t_fdf **fdf);
 int		start(t_fdf **fdf);
+void	print_menu(t_fdf **fdf);
 
 /* Cam */
 

@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 15:29:57 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 02:04:42 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 02:55:36 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ft_keypress(int key, t_fdf **fdf)
 	if (key == KEY_ISO_VISION && ((*fdf)->cam->keycode->i == 0))
 		(*fdf)->cam->keycode->i = 1;
 	start(fdf);
+	
 	return (0);
 }
 
