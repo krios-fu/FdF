@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 19:03:59 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 03:06:22 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 19:30:32 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,39 @@ void	print_menu(t_fdf **fdf)
 {
 	char *menu;
 
-	menu = "w, s, d, a: Move picture";
+	menu = "Move picture: w, s, d, a";
 	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 42, 0x03fc35, menu);
-	menu = "Up, Dowm: zoom";
+	menu = "Zoom: Up, Dowm ";
 	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 62, 0x03fc35, menu);
-	menu = "Rigth, Left : Rotation";
+	menu = "Rotation: Rigth, Left";
 	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 82, 0x03fc35, menu);
-	menu = "p, i: 2D, 3D";
+	menu = "2D, 3D: p, i";
 	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 102, 0x03fc35, menu);
+	menu = "Move Angle: q, e";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 122, 0x03fc35, menu);
+	menu = "Mood Universe: SP";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 122, 0x03fc35, menu);
+}
+
+void print_star(t_fdf **fdf)
+{
+	int i;
+
+	i = 0;
+	if((*fdf)->cam->keycode->sp)
+	{
+		while (i < 100)
+		{
+			mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, rand () % 1080 , rand () %  720  , 0xffc700, ".");
+			mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, rand () % 1080   , rand () %  720 , 0xffffff, ".");
+			i++;
+		}		
+	}
 }
 
 int		ft_exit(t_fdf **fdf)
 {
-	write(1, "\n\x1b[36mClose\n", 13);
+	write(1, "\x1b[36mClose\n", 11);
 	mlx_destroy_window((*fdf)->data->mlx, (*fdf)->data->win);
 	exit(0);
 }
@@ -56,6 +76,7 @@ int start(t_fdf **fdf)
 	 draw(fdf);
 	 mlx_put_image_to_window((*fdf)->data->mlx,
 	 (*fdf)->data->win, (*fdf)->data->img, 0, 0);
+	 print_star(fdf);
 	 print_menu(fdf);
 	return(1);
 }
@@ -89,8 +110,12 @@ int main(int argc, char *argv[])
 	fdf->cam->keycode->rl = 0;
 	fdf->cam->keycode->p = 0;
 	fdf->cam->keycode->i = 0;
+	fdf->cam->keycode->sp = 0;
 	fdf->cam->plane = 0;
 	fdf->cam->rotspeed = 0.8;
+	fdf->cam->keycode->e = 0;
+	fdf->cam->keycode->q = 0;
+	fdf->cam->angle = 0.8;
 	
 	
 	fill_check(&fdf, argv[1]);
@@ -108,6 +133,7 @@ int main(int argc, char *argv[])
 	mlx_put_image_to_window(fdf->data->mlx,
 		fdf->data->win, fdf->data->img, 0, 0);
 	print_menu(&fdf);
+	print_star(&fdf);
 	//draw(&fdf);
 	mlx_hook(fdf->data->win, 2, (1L << 0), ft_keypress,&fdf);
 	mlx_hook(fdf->data->win, 3, (1L << 0), ft_keyrelease, &fdf);

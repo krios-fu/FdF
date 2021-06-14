@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 02:40:11 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 19:09:27 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define KEY_LEFT_VISION		123
 # define KEY_PLANE_VISION		35
 # define KEY_ISO_VISION			34
+# define KEY_ANGLE_Q_VISION		12
+# define KEY_ANGLE_E_VISION		14
+# define KEY_UNIVER_VISION		49
 
 # define ESC					53
 
@@ -69,6 +72,9 @@ typedef struct		s_keycode
 	int				zd;
 	int				p;
 	int				i;
+	int				q;
+	int				e;
+	int				sp;
 
 	int				esc;
 }					t_keycode;
@@ -78,7 +84,7 @@ typedef struct s_cam
 	t_keycode		*keycode;
 	int 			dir_x;
 	int				dir_y;
-	double			movespeed;
+	double			angle;
 	double			rotspeed;
 	int 			plane;
 	
@@ -107,7 +113,7 @@ void	p_error(char *s);
 /* Draw */
 
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
-void	bresenham(float x1, float y1, float x2, float y2, t_fdf **fdf);
+void	bresenham(double x1, double y1, double x2, double y2, t_fdf **fdf);
 int		draw(t_fdf **fdf);
 int		start(t_fdf **fdf);
 void	print_menu(t_fdf **fdf);
