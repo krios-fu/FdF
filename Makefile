@@ -1,6 +1,6 @@
 GNL= srcs/gnl/get_next_line_bonus.c
 NAME= fdf.a
-SRC= $(GNL) fdf.c ./srcs/fdf/utils.c ./srcs/fdf/read_map.c ./srcs/fdf/draw.c ./srcs/fdf/key_code.c ./srcs/fdf/key_move.c
+SRC= $(GNL) fdf.c ./srcs/fdf/utils.c ./srcs/fdf/read_map.c ./srcs/fdf/draw.c ./srcs/fdf/key_code.c ./srcs/fdf/key_move.c ./srcs/fdf/screenshot.c
 SRC+= 
 OBJ1=$(SRC:.c=.o)
 OBJ=$(OBJ1:.m=.o)

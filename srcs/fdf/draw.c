@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 21:04:49 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 18:14:35 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 21:51:38 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,30 @@ void	bresenham(double x1, double y1, double x2, double y2, t_fdf **fdf)
 	int	max;
 	int z1;
 	int z2;
+	int color;
 
-	z1 = (*fdf)->map->table[(int)y1][(int)x1] * (*fdf)->map->zoom;
-	z2 = (*fdf)->map->table[(int)y2][(int)x2] * (*fdf)->map->zoom;
-	(*fdf)->map->color = (z1 || z2) ? 0xff00ff : 0xFFFFFF;
+		if((*fdf)->map->table[(int)y1][(int)x1] >= 0)
+		{
+			z1 = ((*fdf)->map->table[(int)y1][(int)x1] * (*fdf)->map->eleva) * (*fdf)->map->zoom;
+			z2 = ((*fdf)->map->table[(int)y2][(int)x2] * (*fdf)->map->eleva)  * (*fdf)->map->zoom;	
+		}
+		else
+		{
+			z1 = ((*fdf)->map->table[(int)y1][(int)x1] * -(*fdf)->map->eleva) * (*fdf)->map->zoom;
+			z2 = ((*fdf)->map->table[(int)y2][(int)x2] * -(*fdf)->map->eleva)  * (*fdf)->map->zoom;		
+		}
+	color = (*fdf)->map->color[(int)y1][(int)x1];
 	x1 *= (*fdf)->map->zoom;
 	x2 *= (*fdf)->map->zoom;
 	y1 *= (*fdf)->map->zoom;
 	y2 *= (*fdf)->map->zoom;
 	
-	
-
 	if((*fdf)->cam->plane == 0)
 	{
 		isometric(&x1, &y1, z1, fdf);
 		isometric(&x2, &y2, z2, fdf);
 		
 	}
-
 	rotate(&x1, &y1, fdf);
 	rotate(&x2, &y2, fdf);
 
@@ -95,7 +101,7 @@ void	bresenham(double x1, double y1, double x2, double y2, t_fdf **fdf)
 	{
 		if(y1 >= (*fdf)->data->winy || y1 < 0 || x1 > (*fdf)->data->winx || x1 < 0 )
 		return ;		
-		my_mlx_pixel_put(*fdf, x1, y1, (*fdf)->map->color);
+		my_mlx_pixel_put(*fdf, x1, y1,  color);
 		x1 += x_step;
 		y1 += y_step;
 	}

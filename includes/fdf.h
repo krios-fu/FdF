@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 19:09:27 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 21:52:09 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 # define KEY_ANGLE_Q_VISION		12
 # define KEY_ANGLE_E_VISION		14
 # define KEY_UNIVER_VISION		49
+# define KEY_ELE_C_VISION		8
+# define KEY_ELE_X_VISION		7
+# define KEY_SCREEN_SHOT		40
 
 # define ESC					53
 
@@ -52,12 +55,25 @@ typedef struct		s_data
 
 typedef struct	s_map
 {
-	int	color;
-	int **table;
-	int x;
-	int y;
-	int zoom;
+	int		**color;
+	int 	**table;
+	int 	x;
+	int 	y;
+	int 	zoom;
+	int		eleva;
 }				t_map;
+
+
+typedef struct s_aux_map
+{
+	char	*line;
+	char	**val;
+	char	**color;
+	int		fd;
+	int		x;
+	int		y;
+}			t_aux_map;
+
 
 
 typedef struct		s_keycode
@@ -75,6 +91,8 @@ typedef struct		s_keycode
 	int				q;
 	int				e;
 	int				sp;
+	int				c;
+	int				x;
 
 	int				esc;
 }					t_keycode;
@@ -105,6 +123,7 @@ int		word_count(char **str);
 void	fiil_map(char *file, t_fdf **fdf);
 void	print_map(t_fdf **fdf);
 void	check_map(char *file, t_fdf **fdf);
+void	get_color(char *file, t_fdf **fdf);
 
 
 /* Error messages*/
@@ -123,4 +142,5 @@ void	print_menu(t_fdf **fdf);
 int	ft_keypress(int key, t_fdf **fdf);
 int ft_keyrelease(int key, t_fdf **fdf);
 int	key_move(t_fdf **fdf);
+int		ft_screenshot(t_fdf **fdf);
 #endif

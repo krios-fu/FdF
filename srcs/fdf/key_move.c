@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:01:57 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 19:07:00 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 20:33:46 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,16 @@ int	key_move(t_fdf **fdf)
 		(*fdf)->cam->angle -= 0.1;
 	if((*fdf)->cam->keycode->e == 1)
 		(*fdf)->cam->angle += 0.1;
+	if((*fdf)->cam->keycode->c == 1)
+		(*fdf)->map->eleva += 1;
+	if((*fdf)->cam->keycode->x == 1)
+		(*fdf)->map->eleva -= 1;
+	if ((*fdf)->cam->keycode->esc == 1)
+	{
+		write(1, "\n\x1b[36m[you have pressed the esc key!]\n", 38);
+		mlx_clear_window((*fdf)->data->mlx,(*fdf)->data->win);
+		mlx_destroy_window((*fdf)->data->mlx, (*fdf)->data->win);
+		exit(0);
+	}
 	return(0);
 }

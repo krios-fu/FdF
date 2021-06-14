@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 19:03:59 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 19:30:32 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 21:52:34 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void fill_check(t_fdf **fdf, char *str)
 {
 	check_map(str, fdf);
 	fiil_map(str, fdf);
+	get_color(str, fdf);
 }
 
 int start(t_fdf **fdf)
@@ -116,6 +117,11 @@ int main(int argc, char *argv[])
 	fdf->cam->keycode->e = 0;
 	fdf->cam->keycode->q = 0;
 	fdf->cam->angle = 0.8;
+	fdf->cam->keycode->c = 0;
+	fdf->map->eleva = 1;
+	fdf->cam->keycode->x = 0;
+	fdf->cam->keycode->esc = 0;
+	
 	
 	
 	fill_check(&fdf, argv[1]);

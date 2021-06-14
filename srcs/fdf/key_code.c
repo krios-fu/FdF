@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 15:29:57 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 19:30:47 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/14 20:45:40 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_keypress(int key, t_fdf **fdf)
 {
-	// write(2, ft_itoa(key), 3);
+	 write(2, ft_itoa(key), 3);
 	if (key == KEY_UP && ((*fdf)->cam->keycode->w == 0))
 		(*fdf)->cam->keycode->w  = 1;
 	if (key == KEY_DOWN && ((*fdf)->cam->keycode->s == 0))
@@ -39,6 +39,14 @@ int	ft_keypress(int key, t_fdf **fdf)
 		(*fdf)->cam->keycode->e = 1;
 	if (key == KEY_ANGLE_Q_VISION && ((*fdf)->cam->keycode->q == 0))
 		(*fdf)->cam->keycode->q = 1;
+	if (key == KEY_ELE_C_VISION && ((*fdf)->cam->keycode->c == 0))
+		(*fdf)->cam->keycode->c = 1;
+	if (key == KEY_ELE_X_VISION && ((*fdf)->cam->keycode->x == 0))
+		(*fdf)->cam->keycode->x = 1;
+	if (key == ESC && (*fdf)->cam->keycode->esc == 0)
+		(*fdf)->cam->keycode->esc = 1;
+	if (key == KEY_SCREEN_SHOT)
+			ft_screenshot(fdf);
 	if (key == KEY_UNIVER_VISION)
 		{
 			if (!(*fdf)->cam->keycode->sp)
@@ -77,5 +85,9 @@ int	ft_keyrelease(int key, t_fdf **fdf)
 		(*fdf)->cam->keycode->e = 0;
 	if (key == KEY_ANGLE_Q_VISION && ((*fdf)->cam->keycode->q == 1))
 		(*fdf)->cam->keycode->q = 0;
+	if (key == KEY_ELE_C_VISION && ((*fdf)->cam->keycode->c == 1))
+		(*fdf)->cam->keycode->c = 0;
+	if (key == KEY_ELE_X_VISION && ((*fdf)->cam->keycode->x == 1))
+		(*fdf)->cam->keycode->x = 0;
 	return (0);
 }
