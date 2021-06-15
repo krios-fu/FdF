@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 19:03:59 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 03:03:03 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 18:59:08 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,11 @@ int main(int argc, char *argv[])
 	
 	fdf = (t_fdf *)malloc(sizeof(t_fdf));
 	fdf->map = &map;
-	fdf->map->zoom = 3;
+	fdf->map->zoom = 2;
 	fdf->data = &data;
 	fdf->data->arg = argc;
-	fdf->data->winx = 1080;
-	fdf->data->winy = 720;
+	fdf->data->winx = 2160;
+	fdf->data->winy = 1100;
 	fdf->cam = &cam;
 	fdf->cam->keycode = &keycode;
 
@@ -125,21 +125,22 @@ int main(int argc, char *argv[])
 	fdf->cam->keycode->i = 0;
 	fdf->cam->keycode->sp = 0;
 	fdf->cam->plane = 0;
-	fdf->cam->rotspeed = 0.8;
+	fdf->cam->rotspeed = 0.023599;
 	fdf->cam->keycode->e = 0;
 	fdf->cam->keycode->q = 0;
-	fdf->cam->angle = 0.8;
 	fdf->cam->keycode->c = 0;
+	fdf->cam->angle = 0.023599;
 	fdf->map->eleva = 1;
 	fdf->cam->keycode->x = 0;
 	fdf->cam->keycode->esc = 0;
+	fdf->map->zoom = 1;
 	
 	
 	
 	fill_check(&fdf, argv[1]);
 
 	fdf->cam->dir_x = (int)fdf->data->winx / 2;
-	fdf->cam->dir_y = (int)(fdf->data->winy / 3);
+	fdf->cam->dir_y = (int)(fdf->data->winy / 2);
 	fdf->data->mlx = mlx_init();
 	fdf->data->win =
 		mlx_new_window(fdf->data->mlx, fdf->data->winx, fdf->data->winy, "FdF");

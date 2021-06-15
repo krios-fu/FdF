@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 02:01:27 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 23:03:34 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,19 @@ typedef struct	s_map
 	int 	zoom;
 	double		eleva;
 }				t_map;
+
+typedef struct s_breshman
+{
+	double		x1;
+	double		x2;
+	double		y1;
+	double		y2;
+	double		x_step;
+	double		y_step;
+	double		i;
+	double 		j;
+	
+}				t_breshman;
 
 
 typedef struct s_aux_map
@@ -128,19 +141,25 @@ void	get_color(char *file, t_fdf **fdf);
 
 /* Error messages*/
 void	p_error(char *s);
+int		str_hexa_to_int(char *str);
 
 /* Draw */
 
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
-void	bresenham(double x1, double y1, double x2, double y2, t_fdf **fdf);
-int		draw(t_fdf **fdf);
+void	draw(t_fdf **fdf);
 int		start(t_fdf **fdf);
 void	print_menu(t_fdf **fdf);
 
+/* utils Draw */
+void	set_zoom(t_breshman *brs, t_fdf **fdf);
+void	set_move(t_breshman *brs, t_fdf **fdf);
+double	max_n(double a, double b);
+void	rotate(double *x, double *y, t_fdf **fdf);
+
 /* Cam */
 
-int	ft_keypress(int key, t_fdf **fdf);
-int ft_keyrelease(int key, t_fdf **fdf);
-int	key_move(t_fdf **fdf);
+int		ft_keypress(int key, t_fdf **fdf);
+int 	ft_keyrelease(int key, t_fdf **fdf);
+int		key_move(t_fdf **fdf);
 int		ft_screenshot(t_fdf **fdf);
 #endif

@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 20:37:29 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 02:22:27 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 22:35:57 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_bmp_cabezera(t_fdf **fdf, int fd, int ps)
 	unsigned char	header[54];
 	int				filesize;
 
-	filesize = 54 + ((*fdf)->data->winx * 3 * (*fdf)->data->winy) +
-		(ps * (*fdf)->data->winx);
+	filesize = 54 + ((*fdf)->data->winx * 3 * (*fdf)->data->winy)
+		+ (ps * (*fdf)->data->winx);
 	ft_bzero(header, 54);
 	header[0] = (unsigned char)('B');
 	header[1] = (unsigned char)('M');
@@ -41,17 +41,16 @@ void	ft_bmp_cabezera(t_fdf **fdf, int fd, int ps)
 	write(fd, (*fdf)->data->addr, (*fdf)->data->winx * (*fdf)->data->winy * 4);
 }
 
-int		ft_screenshot(t_fdf **fdf)
+int	ft_screenshot(t_fdf **fdf)
 {
-	int				fd;
-	int				padsize;
+	int	fd;
+	int	padsize;
 
 	padsize = (4 - ((*fdf)->data->winx * 3) % 4) % 4;
-	write(1, "\n\x1b[36m[Screenshot] \t Route: ./fdf.bmp\n", 44);
-	
+	write(1, "\n\x1b[36m[Screenshot] \t Route: ./fdf.bmp\n", 39);
 	fd = open("./fdf.bmp", O_WRONLY | O_CREAT, S_IRWXU | O_TRUNC | O_APPEND);
-	if(!fd)
-		write(1,"\x1b[36mScreenshot could not be created!", 40);
+	if (!fd)
+		write(1, "\x1b[36mScreenshot could not be created!", 40);
 	ft_bmp_cabezera(fdf, fd, padsize);
 	return (1);
 }
