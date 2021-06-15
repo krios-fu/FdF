@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 21:04:49 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 21:51:38 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 03:33:59 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void isometric(double *x, double *y, int z, t_fdf **fdf)
 {
 	(void)fdf;
 	*x = (*x - *y) * cos((*fdf)->cam->angle);
-	*y = (*x + *y) * sin((*fdf)->cam->angle) - z;
+	*y = (*x + *y) * sin(0.8) - z;
 }
 
 void	bresenham(double x1, double y1, double x2, double y2, t_fdf **fdf)
@@ -100,8 +100,9 @@ void	bresenham(double x1, double y1, double x2, double y2, t_fdf **fdf)
 	while ((int)(x1 - x2) || (int)(y1 - y2))
 	{
 		if(y1 >= (*fdf)->data->winy || y1 < 0 || x1 > (*fdf)->data->winx || x1 < 0 )
-		return ;		
-		my_mlx_pixel_put(*fdf, x1, y1,  color);
+		return ;
+	
+			my_mlx_pixel_put(*fdf, x1, y1,  color);
 		x1 += x_step;
 		y1 += y_step;
 	}
