@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 15:29:57 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 20:45:40 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 02:40:25 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_keypress(int key, t_fdf **fdf)
 {
-	 write(2, ft_itoa(key), 3);
 	if (key == KEY_UP && ((*fdf)->cam->keycode->w == 0))
 		(*fdf)->cam->keycode->w  = 1;
 	if (key == KEY_DOWN && ((*fdf)->cam->keycode->s == 0))
@@ -55,7 +54,6 @@ int	ft_keypress(int key, t_fdf **fdf)
 				(*fdf)->cam->keycode->sp = 0;
 		}
 	start(fdf);
-	
 	return (0);
 }
 

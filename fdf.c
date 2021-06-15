@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 19:03:59 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 21:52:34 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 03:03:03 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,30 @@ void	print_menu(t_fdf **fdf)
 {
 	char *menu;
 
-	menu = "Move picture: w, s, d, a";
+	menu = "Move picture: W, S, D, A";
 	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 42, 0x03fc35, menu);
 	menu = "Zoom: Up, Dowm ";
-	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 62, 0x03fc35, menu);
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 62, 0xFFFFFF, menu);
 	menu = "Rotation: Rigth, Left";
 	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 82, 0x03fc35, menu);
-	menu = "2D, 3D: p, i";
-	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 102, 0x03fc35, menu);
-	menu = "Move Angle: q, e";
+	menu = "2D, 3D: P, I";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 102, 0xFFFFFF, menu);
+	menu = "Move Angle: Q, E";
 	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 122, 0x03fc35, menu);
 	menu = "Mood Universe: SP";
-	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 122, 0x03fc35, menu);
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 142, 0xFFFFFF, menu);
+	menu = "Screenshot: K";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 162, 0x03fc35, menu);
+
+	menu = "Zoom:";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 380, 0x03fc35, menu);
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 44, 400, 0xFFFFFF, ft_itoa((*fdf)->map->zoom));
+	menu = "Rotation:";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 420, 0x03fc35, menu);
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 44, 440, 0xFFFFFF, ft_itoa((*fdf)->cam->rotspeed));
+	menu = "Elevation:";
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 42, 460, 0x03fc35, menu);
+	mlx_string_put((*fdf)->data->mlx, (*fdf)->data->win, 44, 480, 0xFFFFFF, ft_itoa((*fdf)->map->eleva));
 }
 
 void print_star(t_fdf **fdf)
@@ -66,7 +78,7 @@ void fill_check(t_fdf **fdf, char *str)
 {
 	check_map(str, fdf);
 	fiil_map(str, fdf);
-	get_color(str, fdf);
+	// get_color(str, fdf);
 }
 
 int start(t_fdf **fdf)

@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:26 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 23:02:35 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 02:39:33 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,58 @@ void	allocate_map(t_fdf **fdf)
 	{
 		(*fdf)->map->table[i] = (int *)malloc(sizeof(int) * (*fdf)->map->x + 1);
 		(*fdf)->map->color[i] = (int *)malloc(sizeof(int) * (*fdf)->map->x + 1);
-		if(!(*fdf)->map->table[i] || !(*fdf)->map->table[i])
+		if(!(*fdf)->map->table[i] || !(*fdf)->map->color[i])
 			p_error("Fail malloc");
 		i++;
 	}
 	
 }
+
+int str_hexa_to_int(char *str)
+{
+	int num;
+	int i;
+
+	i = 0;
+	if(!str)
+		return(0xffffff);
+	while (str[i] && i < 7)
+	{
+		if (str[i] == ' ')
+			return(num);
+		if(str[i] >= '0' && str[i] <= '9')
+	   		num = num * 16 + str[i] - '0';
+	  	if(str[i] >= 'a' && str[i] <= 'f')
+	   		num = num * 16 + str[i] - 'a' + 10;
+	  	if(str[i] >= 'A' && str[i] <= 'F')
+	  	 num = num * 16 + str[i] - 'A'+ 10; 
+		i++;
+	}
+	return (num);
+}
+
+char *str_ox(char *str)
+{
+	int i ;
+
+	i = 0;
+	
+	while (str[i])
+	{
+		if(ft_isdigit(str[i]) || str[i] == ',' || str[i] == '-' )
+		 i++;
+		if(str[i] == ' ')
+			return(NULL);
+		if(str[i] == 'x')
+			return(&str[ i + 1]);
+	}
+	return(NULL);
+}
+
 void	fiil_map(char *file, t_fdf **fdf)
 {
 	t_aux_map aux;
+
 
 	aux.fd = open(file, O_RDONLY, 0);
 	allocate_map(fdf);
@@ -54,7 +97,10 @@ void	fiil_map(char *file, t_fdf **fdf)
 		aux.x = 0;
 		while ( aux.x < (*fdf)->map->x)
 		{
+	
 			(*fdf)->map->table[aux.y][aux.x] = ft_atoi(aux.val[aux.x]);
+		
+			(*fdf)->map->color[aux.y][aux.x] = str_hexa_to_int(str_ox(aux.val[aux.x]));
 			aux.x++;
 			free(aux.val[aux.x]);
 		}
@@ -64,6 +110,7 @@ void	fiil_map(char *file, t_fdf **fdf)
 		free(aux.line);
 	}
 	(*fdf)->map->table[aux.y] = 0;
+	close(aux.fd);
 	free(aux.line);
 }
 
@@ -79,25 +126,6 @@ int			ft_rgb(int r, int g, int b)
 }
 
 
-int str_hexa_to_int(char *str)
-{
-	int num;
-	int i;
-
-	i = 2;
-	write(2, "entre COLOR\n", 13);
-	while (str[i])
-	{
-		if(str[i] >= '0' && str[i] <= '9')
-	   		num = num * 16 + str[i] - '0';
-	  	if(str[i] >= 'a' && str[i] <= 'f')
-	   		num = num * 16 + str[i] - 'a' + 10;
-	  	if(str[i] >= 'A' && str[i] <= 'F')
-	  	 num = num * 16 + str[i] - 'A'+ 10; 
-		i++;
-	}
-	return (num);
-}
 
 void	get_color(char *file, t_fdf **fdf)
 {
@@ -118,6 +146,7 @@ void	get_color(char *file, t_fdf **fdf)
 			aux.color = ft_split(&aux.val[aux.y][aux.x], ',');
 			if (aux.color[1])
 			{
+				write(2, aux.color[1], ft_strlen(aux.color[1]));
 				(*fdf)->map->color[aux.y][aux.x] = str_hexa_to_int(aux.color[1]);
 				free(aux.color[1]);
 			}

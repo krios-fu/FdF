@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 17:33:47 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/03/31 15:45:32 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 02:19:51 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	plus *= ft_cmp_p_n(ft_isspace((char *)str));
+	
 	return (plus);
 }

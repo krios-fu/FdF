@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 21:52:09 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 02:01:27 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct	s_map
 	int 	x;
 	int 	y;
 	int 	zoom;
-	int		eleva;
+	double		eleva;
 }				t_map;
 
 

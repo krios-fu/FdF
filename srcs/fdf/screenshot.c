@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 20:37:29 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/14 21:16:48 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/15 02:22:27 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int		ft_screenshot(t_fdf **fdf)
 	int				padsize;
 
 	padsize = (4 - ((*fdf)->data->winx * 3) % 4) % 4;
-	write(1, "\n\x1b[36m[Screenshot] \t Route: ./srcs/utils/cub3D.bmp\n", 51);
+	write(1, "\n\x1b[36m[Screenshot] \t Route: ./fdf.bmp\n", 44);
 	
-	fd = open("./srcs/fdf.bmp", O_WRONLY | O_CREAT, S_IRWXU | O_TRUNC | O_APPEND);
+	fd = open("./fdf.bmp", O_WRONLY | O_CREAT, S_IRWXU | O_TRUNC | O_APPEND);
 	if(!fd)
 		write(1,"\x1b[36mScreenshot could not be created!", 40);
 	ft_bmp_cabezera(fdf, fd, padsize);
