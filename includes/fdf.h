@@ -6,12 +6,12 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 21:00:09 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:33:11 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_
-# define FDF_
+#ifndef FDF_H
+# define FDF_H
 # include "../srcs/libft/libft.h"
 # include "../srcs/gnl/get_next_line_bonus.h"
 # include "../srcs/minilibx/mlx.h"
@@ -38,7 +38,7 @@
 # define ESC					53
 
 /* Struct data map */
-typedef struct		s_data
+typedef struct s_data
 {
 	void			*mlx;
 	void			*win;
@@ -53,13 +53,13 @@ typedef struct		s_data
 	int				arg;
 }					t_data;
 
-typedef struct	s_map
+typedef struct s_map
 {
-	int		**color;
-	int 	**table;
-	int 	x;
-	int 	y;
-	double 	zoom;
+	int			**color;
+	int			**table;
+	int			x;
+	int			y;
+	double		zoom;
 	double		eleva;
 }				t_map;
 
@@ -72,10 +72,8 @@ typedef struct s_breshman
 	double		x_step;
 	double		y_step;
 	double		i;
-	double 		j;
-	
+	double		j;	
 }				t_breshman;
-
 
 typedef struct s_aux_map
 {
@@ -87,9 +85,7 @@ typedef struct s_aux_map
 	int		y;
 }			t_aux_map;
 
-
-
-typedef struct		s_keycode
+typedef struct s_keycode
 {
 	int				w;
 	int				s;
@@ -113,17 +109,16 @@ typedef struct		s_keycode
 typedef struct s_cam
 {
 	t_keycode		*keycode;
-	int 			dir_x;
+	int				dir_x;
 	int				dir_y;
 	double			angle;
 	double			rotspeed;
-	int 			plane;
-	
+	int				plane;	
 }				t_cam;
 
 /* Data center */
 
-typedef struct	s_fdf
+typedef struct s_fdf
 {
 	t_map		*map;
 	t_data		*data;
@@ -140,7 +135,6 @@ void	print_map(t_fdf **fdf);
 void	check_map(char *file, t_fdf **fdf);
 void	get_color(char *file, t_fdf **fdf);
 
-
 /* Utils*/
 void	p_error(char *s);
 int		str_hexa_to_int(char *str);
@@ -154,23 +148,23 @@ int		start(t_fdf **fdf);
 void	print_menu(t_fdf **fdf);
 
 /* utils Draw */
+
 void	set_zoom(t_breshman *brs, t_fdf **fdf);
 void	set_move(t_breshman *brs, t_fdf **fdf);
 double	max_n(double a, double b);	
-void	rotate(t_breshman *brs, t_fdf **fdf);
 
 /* Cam */
 
 int		ft_keypress(int key, t_fdf **fdf);
-int 	ft_keyrelease(int key, t_fdf **fdf);
+int		ft_keyrelease(int key, t_fdf **fdf);
 int		key_move(t_fdf **fdf);
 int		ft_screenshot(t_fdf **fdf);
 
-
 /* start */
+
 void	set_var(t_fdf	**fdf);
 void	create_windows(t_fdf **fdf);
-int 	start(t_fdf **fdf);
+int		start(t_fdf **fdf);
 int		ft_exit(t_fdf **fdf);
 void	fill_check(t_fdf **fdf, char *str);
 
