@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 03:12:33 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 19:35:25 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,4 +165,13 @@ int		ft_keypress(int key, t_fdf **fdf);
 int 	ft_keyrelease(int key, t_fdf **fdf);
 int		key_move(t_fdf **fdf);
 int		ft_screenshot(t_fdf **fdf);
+
+
+/* start */
+void	set_var(t_fdf	**fdf);
+void	create_windows(t_fdf **fdf);
+int 	start(t_fdf **fdf);
+int		ft_exit(t_fdf **fdf);
+void	fill_check(t_fdf **fdf, char *str);
+
 #endif

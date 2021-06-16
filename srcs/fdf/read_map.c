@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:26 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 02:30:50 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 18:51:26 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	check_map(char *file, t_fdf **fdf)
 
 	words = NULL;
 	fd = open(file, O_RDONLY);
+	if (fd ==  -1 || ft_strnstr(file, ".fdf", 4))
+		p_error("Fail map");
 	(*fdf)->map->y = 0;
 	(*fdf)->map->x = 0;
 	while (get_next_line(fd, &line) > 0)
