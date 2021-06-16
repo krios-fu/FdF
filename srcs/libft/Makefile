@@ -11,7 +11,7 @@ OBJB		= ${SRCB:.c=.o}
 
 NAME		= libft.a
 
-CC			= cc
+
 
 RM			= rm -f
 

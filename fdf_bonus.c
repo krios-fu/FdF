@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 19:27:04 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 19:50:30 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:00:32 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	print_menu(t_fdf **fdf)
 	free(data);
 }
 
-static int start(t_fdf **fdf)
+int start(t_fdf **fdf)
 {	
 	key_move(fdf);
 	mlx_destroy_image((*fdf)->data->mlx, (*fdf)->data->img);

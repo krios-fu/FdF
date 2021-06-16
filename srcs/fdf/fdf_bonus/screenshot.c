@@ -6,11 +6,11 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 20:37:29 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 22:35:57 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 20:59:21 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#include "../../../includes/fdf.h"
 
 void	ft_bit_rgb(unsigned char *s, int i)
 {

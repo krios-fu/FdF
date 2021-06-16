@@ -6,11 +6,11 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 15:29:57 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 23:14:15 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 20:59:26 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#include "../../../includes/fdf.h"
 
 void static	ft_keypress_two(int key, t_fdf **fdf)
 {
