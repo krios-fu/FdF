@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:26 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 23:03:56 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 02:30:50 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ void	fiil_map(char *file, t_fdf **fdf)
 			(*fdf)->map->color[aux.y][aux.x]
 				= str_hexa_to_int(str_ox(aux.val[aux.x]));
 			aux.x++;
-			free(aux.val[aux.x]);
 		}
 		aux.y++;
-		free(aux.val);
+		free_matrix(aux.val);
 		free(aux.line);
 	}
 	close(aux.fd);
@@ -101,6 +100,7 @@ void	check_map(char *file, t_fdf **fdf)
 		check_line_x(fdf, word_count(words));
 		(*fdf)->map->y++;
 		free(line);
+		free_matrix(words);
 	}
 	free(line);
 	close(fd);

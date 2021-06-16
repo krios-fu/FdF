@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:38:06 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 23:05:05 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 02:31:07 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,17 @@ int	str_hexa_to_int(char *str)
 		i++;
 	}
 	return (num);
+}
+
+void	free_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while	(matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
 }

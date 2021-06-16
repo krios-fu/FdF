@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 21:04:49 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 21:37:45 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 03:45:24 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	isometric	(double *x, double *y, int z, t_fdf **fdf)
 	tmp_x = *x;
 	if ((*fdf)->cam->plane == 0)
 	{
-		*x = (tmp_x + *y) * sin(0.8) * 2;
-		*y = (*y - tmp_x) * cos(0.8) - z;
+		*x = (tmp_x + *y) * sin((*fdf)->cam->rotspeed ) * 2;
+		*y = (*y - tmp_x) * cos(-(*fdf)->cam->rotspeed ) - z;
 	}
 }
 
@@ -28,8 +28,8 @@ static void	draw_line(t_breshman *brs, t_fdf **fdf, int color)
 {
 	double	max;
 
-	rotate(&brs->x1, &brs->y1, fdf);
-	rotate(&brs->x2, &brs->y2, fdf);
+	// rotate(brs, fdf);
+	// rotate(brs, fdf);
 	set_move(brs, fdf);
 	brs->x_step = brs->x2 - brs->x1;
 	brs->y_step = brs->y2 - brs->y1;

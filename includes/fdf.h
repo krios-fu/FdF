@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 23:03:34 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 03:12:33 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct	s_map
 	int 	**table;
 	int 	x;
 	int 	y;
-	int 	zoom;
+	double 	zoom;
 	double		eleva;
 }				t_map;
 
@@ -128,6 +128,8 @@ typedef struct	s_fdf
 	t_map		*map;
 	t_data		*data;
 	t_cam		*cam;
+	double		lst_x;
+	double		lst_y;
 }				t_fdf;
 
 /* Map */
@@ -139,9 +141,10 @@ void	check_map(char *file, t_fdf **fdf);
 void	get_color(char *file, t_fdf **fdf);
 
 
-/* Error messages*/
+/* Utils*/
 void	p_error(char *s);
 int		str_hexa_to_int(char *str);
+void	free_matrix(char **matrix);
 
 /* Draw */
 
@@ -153,8 +156,8 @@ void	print_menu(t_fdf **fdf);
 /* utils Draw */
 void	set_zoom(t_breshman *brs, t_fdf **fdf);
 void	set_move(t_breshman *brs, t_fdf **fdf);
-double	max_n(double a, double b);
-void	rotate(double *x, double *y, t_fdf **fdf);
+double	max_n(double a, double b);	
+void	rotate(t_breshman *brs, t_fdf **fdf);
 
 /* Cam */
 

@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 21:34:10 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/15 23:31:19 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 03:06:21 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ double	max_n(double a, double b)
 		return (b);
 }
 
-void	rotate(double *x, double *y, t_fdf **fdf)
+void	rotate(t_breshman *brs, t_fdf **fdf)
 {
-	double	x_d;
-
-	x_d = *x;
-	*x = (x_d * cos(-(*fdf)->cam->rotspeed)) - *y * sin(-(*fdf)->cam->rotspeed);
-	*y = (x_d * sin(-(*fdf)->cam->rotspeed)) + *y * cos(-(*fdf)->cam->rotspeed);
+	double x_d;
+	x_d = brs->x1;
+	// (void)fdf;
+	brs->x1 += ((*fdf)->lst_y - brs->y1) / 200.0f;
+	brs->y1 -= ((*fdf)->lst_x + brs->x1) / 200.0f;
 
 	/* matriz de  rotacion en y en 3d */
 }
