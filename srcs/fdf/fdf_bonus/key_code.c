@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 15:29:57 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 20:59:26 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:17:15 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,18 @@ int	ft_keyrelease(int key, t_fdf **fdf)
 		(*fdf)->cam->keycode->zu = 0;
 	ft_keyrelease_two(key, fdf);
 	return (0);
+}
+
+int	start(t_fdf **fdf)
+{	
+	key_move(fdf);
+	mlx_destroy_image((*fdf)->data->mlx, (*fdf)->data->img);
+	(*fdf)->data->img = mlx_new_image((*fdf)->data->mlx,
+			(*fdf)->data->winx, (*fdf)->data->winy);
+	draw(fdf);
+	mlx_put_image_to_window((*fdf)->data->mlx,
+		(*fdf)->data->win, (*fdf)->data->img, 0, 0);
+	print_star(fdf);
+	print_menu(fdf);
+	return (1);
 }

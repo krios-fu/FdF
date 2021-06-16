@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:01:57 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 20:59:30 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:26:44 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,9 @@ int	key_move(t_fdf **fdf)
 	if ((*fdf)->cam->keycode->d == 1)
 		(*fdf)->cam->dir_x += 50;
 	if ((*fdf)->cam->keycode->zu == 1)
-	{
 		(*fdf)->map->zoom += 0.5;
-		// (*fdf)->cam->dir_y += 50;
-		// (*fdf)->cam->dir_x -= 50;
-	}
 	if ((*fdf)->cam->keycode->zd == 1 && (*fdf)->map->zoom > 0.5)
-	{
 		(*fdf)->map->zoom -= 0.5;
-		// (*fdf)->cam->dir_y -= 50;
-		// (*fdf)->cam->dir_x += 50;
-	}
 	if ((*fdf)->cam->keycode->rl == 1)
 		(*fdf)->cam->rotspeed -= 0.2;
 	if ((*fdf)->cam->keycode->rr == 1)

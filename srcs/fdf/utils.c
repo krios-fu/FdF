@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:38:06 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 19:50:55 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:25:59 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	free_matrix(char **matrix)
 	int	i;
 
 	i = 0;
-	while	(matrix[i])
+	while (matrix[i])
 	{
 		free(matrix[i]);
 		i++;
@@ -66,18 +66,19 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-void create_windows(t_fdf **fdf)
+void	create_windows(t_fdf **fdf)
 {
-
-	 if((*fdf)->map->y > 34)
-	 	(*fdf)->map->zoom = 1;
-	(*fdf)->cam->dir_x = (int)(*fdf)->data->winx / 2 - ((*fdf)->map->x * (*fdf)->map->zoom);
+	if ((*fdf)->map->y > 34)
+		(*fdf)->map->zoom = 1;
+	(*fdf)->cam->dir_x = (int)(*fdf)->data->winx / 2
+		- ((*fdf)->map->x * (*fdf)->map->zoom);
 	(*fdf)->cam->dir_y = (int)((*fdf)->data->winy / 2);
 	(*fdf)->data->mlx = mlx_init();
-	(*fdf)->data->win =
-		mlx_new_window((*fdf)->data->mlx, (*fdf)->data->winx, (*fdf)->data->winy, "FdF");
-	(*fdf)->data->img = mlx_new_image((*fdf)->data->mlx, (*fdf)->data->winx, (*fdf)->data->winy);
-	(*fdf)->data->addr = mlx_get_data_addr((*fdf)->data->img, &(*fdf)->data->bits_per_pixel,
-	 &(*fdf)->data->line_lenght, &(*fdf)->data->endian);
-	
+	(*fdf)->data->win = mlx_new_window((*fdf)->data->mlx,
+			(*fdf)->data->winx, (*fdf)->data->winy, "FdF");
+	(*fdf)->data->img = mlx_new_image((*fdf)->data->mlx,
+			(*fdf)->data->winx, (*fdf)->data->winy);
+	(*fdf)->data->addr = mlx_get_data_addr((*fdf)->data->img,
+			&(*fdf)->data->bits_per_pixel,
+			&(*fdf)->data->line_lenght, &(*fdf)->data->endian);
 }

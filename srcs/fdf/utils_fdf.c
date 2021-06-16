@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 19:40:49 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 20:59:13 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:23:54 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
-	dst = (char *)fdf->data->addr + (y * fdf->data->line_lenght + x
-		* (fdf->data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	dst = (char *)fdf->data->addr + (y * fdf->data->line_lenght
+			+ x * (fdf->data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-int		ft_exit(t_fdf **fdf)
+int	ft_exit(t_fdf **fdf)
 {
 	write(1, "\x1b[36mClose\n", 11);
 	mlx_destroy_window((*fdf)->data->mlx, (*fdf)->data->win);
 	exit(0);
 }
 
-void fill_check(t_fdf **fdf, char *str)
+void	fill_check(t_fdf **fdf, char *str)
 {
 	check_map(str, fdf);
 	fiil_map(str, fdf);
@@ -36,7 +36,6 @@ void fill_check(t_fdf **fdf, char *str)
 
 void	set_var(t_fdf	**fdf)
 {
-	
 	(*fdf)->cam->keycode->w = 0;
 	(*fdf)->cam->keycode->a = 0;
 	(*fdf)->cam->keycode->s = 0;
@@ -57,5 +56,4 @@ void	set_var(t_fdf	**fdf)
 	(*fdf)->cam->keycode->x = 0;
 	(*fdf)->cam->keycode->esc = 0;
 	(*fdf)->map->zoom = 20;
-
 }
