@@ -6,13 +6,13 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 19:27:04 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 21:16:44 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:41:41 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fdf.h"
 
-static void	print_star(t_fdf **fdf)
+void	print_star(t_fdf **fdf)
 {
 	int	i;
 
@@ -58,7 +58,7 @@ static void	print_menu_two(t_fdf **fdf)
 	free(data);
 }
 
-static void	print_menu(t_fdf **fdf)
+void	print_menu(t_fdf **fdf)
 {
 	char	*menu;
 

@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 20:12:48 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/16 21:35:01 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/16 21:40:35 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 # include "../srcs/libft/libft.h"
 # include "../srcs/gnl/get_next_line_bonus.h"
-# include "../srcs/minilibx/mlx.h"
+# include <mlx.h>
 # include <math.h>
 
 # define KEY_UP					13
@@ -151,7 +151,8 @@ void	print_menu(t_fdf **fdf);
 
 void	set_zoom(t_breshman *brs, t_fdf **fdf);
 void	set_move(t_breshman *brs, t_fdf **fdf);
-double	max_n(double a, double b);	
+double	max_n(double a, double b);
+void	print_star(t_fdf **fdf);
 
 /* Cam */
 

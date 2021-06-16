@@ -28,7 +28,7 @@ clean:
 	@clear
 	@echo "\n\033[36m"****************\\nDeleted files...\\n****************\\n"\033[0m\n"
 
-bonus:
+bonus: 	all
 		@clear
 		@echo "\n\033[36m"****************\\nBonus...\\n****************\\n"\033[0m\n"
 		@gcc -Wall -Wextra -Werror  $(SRC) $(SRCB) fdf_bonus.c ./srcs/minilibx/libmlx.a -framework OpenGL -framework AppKit  libft.a -o fdf
