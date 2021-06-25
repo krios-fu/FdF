@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 13:12:46 by krios-fu          #+#    #+#             */
-/*   Updated: 2020/12/28 15:01:31 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/06/25 18:02:21 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 500
 # endif
 
 # include <stdio.h>
